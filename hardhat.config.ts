@@ -120,6 +120,11 @@ const userConfig: HardhatUserConfig = {
             ...sharedNetworkConfig,
             url: `https://api.avax.network/ext/bc/C/rpc`,
         },
+        fire: {
+            ...sharedNetworkConfig,
+            chainId: 995,
+            url: `https://rpc.5ire.network`,
+        },
     },
     deterministicDeployment,
     namedAccounts: {
@@ -132,18 +137,20 @@ const userConfig: HardhatUserConfig = {
     //     apiKey: ETHERSCAN_API_KEY,
     // },
     etherscan: {
-        apiKey: "YJY75SW8VYZ8T5IB44JVMV7QK2RBFE79VM",
+        apiKey: {
+            fire: "<etherscan api>"
+        },
         customChains: [
             {
-                network: "fiveire",
+                network: "fire",
                 chainId: 995,
                 urls: {
-                  apiURL: "https://contract.evm.scan.5ire.network/5ire/verify",
-                  browserURL: "https://5irescan.io"
+                    apiURL: "https://contract.evm.scan.5ire.network/5ire/verify",
+                    browserURL: "https://5irescan.io"
                 }
-              }
+            }
         ]
-      },
+    },
 };
 if (NODE_URL) {
     userConfig.networks!.custom = {
